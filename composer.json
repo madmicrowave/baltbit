@@ -1,0 +1,19 @@
+{
+    "name": "microwave/baltbit",
+    "type": "project",
+    "desctipyion": "Task Senior PHP Developer",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Microwave\\Baltbit\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MaksimsGe",
+            "email": "maksimsge@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

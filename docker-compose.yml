@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+    nginx:
+        image: nginx:1.25-alpine
+        ports:
+            - "9001:80"
+        volumes:
+            - .:/srv/www
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+        networks:
+            - baltbit
+
+    php-fpm:
+        build:
+            dockerfile: php.Dockerfile
+        volumes:
+            - .:/srv/www
+        networks:
+            - baltbit
+
+networks:
+    baltbit:
