@@ -29,12 +29,11 @@ README.md. (Today I Learned for programmers - Tiloid)
 
 * Clone repository
     * [https://github.com/madmicrowave/baltbit.git](https://github.com/madmicrowave/baltbit)
-* Run command to setup infrastructure: `make start`
+* Run command to start app: `INFURA_API_KEY={YourApiKey} make start`
+* Run command to run tests: `make test`
 * Access point
-  * Web: http://127.0.0.1:9001/
+  * API: http://127.0.0.1:9001/api
+  * Frontend: http://127.0.0.1:9001
 
-##### Additional settings
-
-
-**Coded by [Maksims Gerasimovs](https://github.com/madmicrowave)**\
+**Coded by [Maksims Gerasimovs](https://www.linkedin.com/in/maksimsge)**\
 **Powered by [baltbit.com](https://baltbit.com/)** 

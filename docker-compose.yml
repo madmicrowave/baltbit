@@ -1,5 +1,8 @@
 version: '3.4'
 
+x-common-variables: &environment
+    INFURA_API_KEY: ${INFURA_API_KEY:-""}
+
 services:
     nginx:
         image: nginx:1.25-alpine
@@ -14,6 +17,7 @@ services:
     php-fpm:
         build:
             dockerfile: php.Dockerfile
+        environment: *environment
         volumes:
             - .:/srv/www
         networks:

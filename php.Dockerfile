@@ -12,7 +12,8 @@ RUN docker-php-ext-install \
         mbstring \
         pdo_mysql \
         zip \
-        iconv
+        iconv \
+        bcmath
 
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 

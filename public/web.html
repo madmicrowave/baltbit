@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="Ethereum transactions reader and converter to ETHEUR">
+    <meta name="author" content="Maksims Gerasimovs (https://www.linkedin.com/in/maksimsge/)">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <title>Baltbit - Senior PHP developer Task</title>
+</head>
+<body>
+<div>
+    <form id="form">
+        <div>
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" name="amount" placeholder="10.00" value="10.00" />
+            <br/>
+            <small>Will show transactions in past 10 minutes for specified amount +/- 3% by binance conversation rates</small>
+        </div>
+        <div>
+            <label for="currency">Currency:</label>
+            <input type="text" id="currency" name="currency" placeholder="ETHEUR" value="ETHEUR" />
+            <br/>
+            <small>You can customize currency</small>
+        </div>
+        <div>
+            <input type="submit" value="Get transaction list">
+        </div>
+    </form>
+</div>
+<div id="transactions"></div>
+
+<script type="text/javascript">
+    document.getElementById('form').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        var amount = document.getElementById('amount').value;
+        var currency = document.getElementById('currency').value;
+        var apiUrl = 'http://127.0.0.1:9001/api?amount=' + encodeURIComponent(amount) + '&currency=' + encodeURIComponent(currency);
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response failed');
+                }
+                return response.json();
+            })
+            .then(data => {
+                var transactionsDiv = document.getElementById('transactions');
+                transactionsDiv.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch:', error);
+            });
+    });
+</script>
+</body>
+</html>
