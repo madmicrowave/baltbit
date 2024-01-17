@@ -23,5 +23,16 @@ services:
         networks:
             - baltbit
 
+    install-composer:
+        build:
+            dockerfile: php.Dockerfile
+        depends_on:
+            - php-fpm
+        volumes:
+            - .:/srv/www
+        command: sh -c "/srv/www/install.sh"
+        networks:
+            - baltbit
+
 networks:
     baltbit:
